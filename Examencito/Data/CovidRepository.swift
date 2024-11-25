@@ -12,6 +12,8 @@ protocol CovidProtocol {
 }
 
 class CovidRepository: CovidProtocol {
+    static let shared = CovidRepository()
+    
     let nservice: NetworkAPIService
     
     init (nservice: NetworkAPIService = NetworkAPIService.shared){

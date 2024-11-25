@@ -15,6 +15,8 @@ class CovidViewModel: ObservableObject {
     func getCovidData() async {
         let CovidRepository = CovidRepository()
         let result = await CovidRepository.getData()
+        var covidRequirement: CovidRequirementProtocol
+        
         
         // Manejo del JSON legible
         if let result = result {
