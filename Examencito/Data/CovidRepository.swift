@@ -7,6 +7,10 @@
 
 import Foundation
 
+protocol CovidProtocol {
+    func getData() async -> [CovidModel]?
+}
+
 class CovidRepository: CovidProtocol {
     let nservice: NetworkAPIService
     
@@ -15,10 +19,14 @@ class CovidRepository: CovidProtocol {
     }
     
     func getData() async -> [CovidModel]? {
-        return await nservice.getData(url: URL(string: "\(API.base)")!)
+        return await nservice.getData(url: URL(string: "\(API.base)\(API.routes.mexico)")!)
     }
 }
 
 struct API{
-    static let base = "https://api.api-ninjas.com/v1/covid19?country=Mexico"
+    static let base = "https://api.api-ninjas.com/v1/covid19"
+    
+    struct routes {
+        static let mexico = "?country=Mexico"
+    }
 }
